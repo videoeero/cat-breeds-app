@@ -1,0 +1,55 @@
+.breedlist {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 2rem 4rem;
+
+  &__search {
+    width: 10rem;
+    height: 2rem;
+    background-color: pink;
+    display: block;
+  }
+  &__item {
+    width: 35rem;
+    margin: 2rem;
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-left: 1rem;
+    }
+
+    &__heading {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: $color-4;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+
+      & .icon__cat {
+        fill: $color-3;
+        width: 4rem;
+        height: 4rem;
+        margin-right: 1rem;
+      }
+
+      &__h3 {
+        color: $color-4;
+      }
+    }
+
+    &__origin {
+      margin-bottom: 0.5rem;
+    }
+
+    &__temperament {
+      margin-bottom: 1rem;
+    }
+  }
+}

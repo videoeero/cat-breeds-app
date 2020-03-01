@@ -1,0 +1,11 @@
+.footer {
+  @include flex;
+
+  background-color: $color-dark;
+  height: 10rem;
+
+  &__text {
+    color: $color-light;
+    font-size: 2rem;
+  }
+}

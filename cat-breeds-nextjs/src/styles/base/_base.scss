@@ -18,10 +18,11 @@ button {
 html,
 body {
   overflow-x: hidden;
-  background-color: $color-light;
+  background-color: $color-white;
   scroll-behavior: smooth;
   position: relative;
-  font-family: 'Arial', sans-serif;
+  // font-family: 'Josefin Sans', 'Arial', sans-serif;
+  font-family: 'Maven Pro', 'Arial', sans-serif;
 }
 
 html {

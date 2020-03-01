@@ -2,14 +2,18 @@
   @include flex;
   padding: 2rem;
   background-image: $gradient-1;
+
   &__img {
     svg {
       fill: $color-2;
     }
   }
   &__text {
+    font-family: 'Josefin Sans', 'Arial', sans-serif;
+    color: $color-light;
   }
 
   &__tagline {
+    font-size: 2.4rem;
   }
 }

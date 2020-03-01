@@ -1,0 +1,5 @@
+.section {
+  &__breedlist {
+    @include flex__column;
+  }
+}
