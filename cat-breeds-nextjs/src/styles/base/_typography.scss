@@ -15,7 +15,7 @@ li {
 a,
 a:link,
 a:visited {
-  color: $color-red;
+  color: $color-4;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s;
@@ -25,7 +25,7 @@ a:visited {
 .heading {
   text-align: center;
   display: inline-block;
-  color: $color-red;
+  color: $color-4;
 
   &__h1 {
     width: 100%;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function nerdCat() {
+export default function NerdCat() {
   return (
     <svg
       height='100'

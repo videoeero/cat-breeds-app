@@ -1,0 +1,15 @@
+.header {
+  @include flex;
+  padding: 2rem;
+  background-image: $gradient-1;
+  &__img {
+    svg {
+      fill: $color-2;
+    }
+  }
+  &__text {
+  }
+
+  &__tagline {
+  }
+}

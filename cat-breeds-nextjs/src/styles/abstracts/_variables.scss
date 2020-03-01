@@ -1,11 +1,10 @@
 // THEME COLORS
 
-$color-red: red;
-$color-red-2: darkred;
-$color-orange: #ce5b3f;
-$color-gunmetal: #2d3142;
-$color-blue: #2a37b1;
-$color-cyan: #01baef;
+$color-1: #de9151;
+$color-2: #f3e37c;
+$color-3: #f3d34a;
+$color-4: #e55934;
+$color-5: #fa7921;
 
 $color-black: #000000;
 $color-dark: #0b0b16;
@@ -18,3 +17,5 @@ $color-white: #ffffff;
 // FONT
 $default-font-size: 1.6rem;
 $gradient-gray: linear-gradient(to right, $color-light, $color-gray);
+$gradient-1: linear-gradient(135deg, $color-4, $color-5);
+$gradient-2: linear-gradient(135deg, $color-2, $color-3);

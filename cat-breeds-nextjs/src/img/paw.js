@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function paw() {
+export default function Paw() {
   return (
     <svg
       height='100px'
