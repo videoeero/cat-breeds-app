@@ -13,7 +13,7 @@ class Header extends Component {
           <div className='header__text'>
             <h1 className='heading__h1'>Cat Knowledge</h1>
             <p className='header__tagline'>
-              You want to be prepared for their world domination
+              You want to be prepared for their world dominance
             </p>
           </div>
         </header>

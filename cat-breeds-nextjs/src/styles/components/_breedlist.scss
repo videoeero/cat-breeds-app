@@ -6,15 +6,82 @@
   list-style: none;
   margin: 2rem 4rem;
 
+  &__origins {
+    @include flex__column;
+    width: 90rem;
+    max-width: 90vw;
+
+    &__list {
+      @include flex;
+      flex-wrap: wrap;
+    }
+
+    &__button {
+      background: none;
+      border: 1px solid $color-6;
+      color: $color-6;
+      padding: 1rem;
+      transition: all 0.3s;
+
+      &.active {
+        color: $color-white;
+        background-color: $color-6;
+        &:hover {
+          color: $color-6;
+          background-color: $color-white;
+        }
+      }
+
+      &:hover {
+        color: $color-white;
+        background-color: $color-6;
+      }
+    }
+  }
+
   &__search {
-    width: 10rem;
-    height: 2rem;
-    background-color: pink;
-    display: block;
+    @include flex;
+    flex-direction: row-reverse;
+    position: relative;
+    width: 40rem;
+    max-width: 90vw;
+    margin: 3rem 1rem 1rem 1rem;
+
+    & label {
+      font-size: 2rem;
+      cursor: text;
+      transition: all 0.3s ease-in-out;
+      transform: translateY(4rem);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 4.5rem;
+      padding: 1.2rem;
+    }
+
+    & input {
+      font-family: 'Maven Pro', 'Arial', sans-serif;
+      width: 100%;
+      padding: 1rem;
+      font-size: 2rem;
+      border: 2px solid $color-3;
+      transition: all 0.3s;
+
+      &:focus {
+        border: 2px solid $color-5;
+      }
+
+      &:placeholder-shown + label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(0rem);
+      }
+    }
   }
   &__item {
     width: 35rem;
     margin: 2rem;
+    max-width: 80vw;
 
     &__info {
       display: flex;
