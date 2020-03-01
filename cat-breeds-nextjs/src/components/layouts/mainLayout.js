@@ -3,7 +3,6 @@ import Navigation from '../includes/Navigation';
 import Header from '../includes/Header';
 import Footer from '../includes/Footer';
 import Head from 'next/head';
-import { PageTransition } from 'next-page-transitions';
 import { withRouter } from 'next/router';
 
 class MainLayout extends Component {
@@ -28,12 +27,7 @@ class MainLayout extends Component {
         <div className='mainLayout_container'>
           <Navigation />
           <Header />
-          <PageTransition timeout={300} classNames='page-transition'>
-            {React.cloneElement(children, {
-              key: router.pathname
-            })}
-          </PageTransition>
-
+          {this.props.children}
           <Footer />
         </div>
       </>
