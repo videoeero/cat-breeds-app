@@ -3,49 +3,49 @@ import Head from 'next/head';
 import Link from 'next/link';
 import CatIcon from '../src/img/CatIcon';
 import SearchIcon from '../src/img/SearchIcon';
+import EarthIcon from '../src/img/EarthIcon';
+import RemoveIcon from '../src/img/RemoveIcon';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      origins: [],
-      search: ''
+      origins: this.props.origins,
+      search: '',
+      filterDefault: true,
+      isOriginFilterOpen: false
     };
     this.handleChange = this.handleChange.bind(this);
+    this.toggleOriginFilterOpen = this.toggleOriginFilterOpen.bind(this);
+    this.resetStates = this.resetStates.bind(this);
     this.handleOriginFilterClick = this.handleOriginFilterClick.bind(this);
-  }
-
-  getOriginsArray(array) {
-    let initialOrigins = [];
-    array.map(item => {
-      if (!initialOrigins.includes(item.origin)) {
-        initialOrigins = [...initialOrigins, item.origin];
-      }
-    });
-    initialOrigins.sort();
-    return initialOrigins;
-  }
-
-  async componentDidMount() {
-    try {
-      const initialOrigins = this.getOriginsArray(
-        this.props.cats.data.catBreeds
-      );
-
-      this.setState({ origins: initialOrigins });
-    } catch (e) {
-      console.log(e);
-    }
   }
 
   handleChange(event) {
     this.setState({ search: event.target.value });
   }
+  toggleOriginFilterOpen() {
+    this.setState({ isOriginFilterOpen: !this.state.isOriginFilterOpen });
+  }
+
+  resetStates() {
+    this.setState({
+      origins: this.props.origins,
+      search: '',
+      filterDefault: true,
+      isOriginFilterOpen: false
+    });
+  }
 
   handleOriginFilterClick(origin) {
     const currentState = this.state.origins;
-
-    if (currentState.includes(origin)) {
+    const filterDefault = this.state.filterDefault;
+    const allOrigins = this.props.origins;
+    if (currentState.length == allOrigins.length && filterDefault) {
+      this.setState({ origins: [origin], filterDefault: false });
+    } else if (currentState.includes(origin) && currentState.length == 1) {
+      this.setState({ origins: this.props.origins, filterDefault: true });
+    } else if (currentState.includes(origin)) {
       const removeThis = currentState.indexOf(origin);
       if (removeThis > -1) {
         currentState.splice(removeThis, 1);
@@ -57,9 +57,9 @@ class Home extends Component {
   }
 
   render() {
+    const { origins, filterDefault, isOriginFilterOpen } = this.state;
     const catBreeds = this.props.cats.data.catBreeds;
-
-    const allOrigins = this.getOriginsArray(catBreeds);
+    const allOrigins = this.props.origins;
 
     let filterBreedsByName = catBreeds.filter(
       breed =>
@@ -100,9 +100,9 @@ class Home extends Component {
           <button
             onClick={() => this.handleOriginFilterClick(item)}
             className={
-              this.state.origins.includes(item)
-                ? 'breedlist__origins__button active'
-                : 'breedlist__origins__button'
+              origins.includes(item) && filterDefault == false
+                ? 'button__filter active'
+                : 'button__filter'
             }
             key={index}
           >
@@ -119,17 +119,50 @@ class Home extends Component {
           <meta name='description' content='Cats cats more cats!' />
         </Head>
         <section className='section__breedlist'>
-          <div className='breedlist__search'>
-            <input
-              autoComplete='off'
-              placeholder='Search for cat breeds'
-              id='search'
-              onChange={this.handleChange}
-            ></input>
-            <label htmlFor='search'>Search for cat breeds</label>
-            <SearchIcon />
+          <div className='breedlist__filter'>
+            <div className='breedlist__filter__search'>
+              <input
+                autoComplete='off'
+                placeholder='Search for cat breeds'
+                id='search'
+                onChange={this.handleChange}
+              ></input>
+              <label htmlFor='search'>Search for cat breeds</label>
+              <SearchIcon />
+            </div>
+            <div className='breedlist__filter__origin'>
+              <div
+                onClick={() => this.toggleOriginFilterOpen()}
+                className='breedlist__filter__origin__item'
+              >
+                <button
+                  className={
+                    isOriginFilterOpen
+                      ? 'button__filter__main active'
+                      : 'button__filter__main'
+                  }
+                >
+                  Filter by origin
+                </button>
+                <EarthIcon />
+              </div>
+              <div
+                onClick={() => this.resetStates()}
+                className='breedlist__filter__origin__item'
+              >
+                <button className='button__filter__main'>Reset</button>
+                <RemoveIcon />
+              </div>
+            </div>
           </div>
-          <div className='breedlist__origins'>
+
+          <div
+            className={
+              isOriginFilterOpen
+                ? 'breedlist__origins active'
+                : 'breedlist__origins'
+            }
+          >
             <p>Filter breeds by origin country</p>
             <div className='breedlist__origins__list'>
               {createOriginFilterList(allOrigins)}

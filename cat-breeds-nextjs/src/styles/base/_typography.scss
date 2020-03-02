@@ -6,6 +6,11 @@ h4,
   max-width: 90vw;
 }
 
+button,
+input {
+  font-family: 'Maven Pro', 'Arial', sans-serif;
+}
+
 p,
 ul,
 li {
@@ -24,17 +29,14 @@ a:visited {
 }
 
 .heading {
-  text-align: center;
-  display: inline-block;
-  color: $color-4;
+  font-family: 'Josefin Sans', 'Arial', sans-serif;
 
   &__h1 {
+    @extend .heading;
     width: 100%;
-
     font-size: 5rem;
     font-weight: 400;
     letter-spacing: 4px;
-    font-family: 'Josefin Sans', 'Arial', sans-serif;
   }
 }
 .paragraph {

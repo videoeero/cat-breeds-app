@@ -1,8 +1,35 @@
 .icon {
-  &__search {
-    width: 4rem;
-    height: 4rem;
+  width: 4rem;
+  height: 4rem;
+  transition: all 0.3s;
+  @include respond(phone) {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__search,
+  &__earth,
+  &__remove {
+    @extend .icon;
     fill: $color-5;
-    margin: 0.5rem 1rem 0 0;
+  }
+
+  &__search {
+    fill: $color-5;
+    margin: 0.5rem 1.3rem 0 0;
+  }
+
+  &__earth {
+    margin-right: 1rem;
+  }
+
+  &__remove {
+    margin-right: 1rem;
+    width: 3.5em;
+    height: 3.5rem;
+    @include respond(phone) {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 }
