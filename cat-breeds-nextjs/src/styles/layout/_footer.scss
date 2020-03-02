@@ -1,8 +1,9 @@
 .footer {
   @include flex;
-
+  margin-top: auto;
   background-color: $color-dark;
-  height: 10rem;
+  width: 100vw;
+  height: 15rem;
 
   &__text {
     color: $color-light;

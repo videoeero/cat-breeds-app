@@ -24,7 +24,7 @@
 
   &__filter__main {
     @extend .button;
-    background-color: $color-5;
+    background-color: $color-4;
     border-radius: 3px;
     font-size: 1.8rem;
     color: $color-white !important;
@@ -44,6 +44,33 @@
     background-color: $color-6;
 
     & + .icon {
+      fill: $color-6;
+    }
+  }
+
+  &__back {
+    @include flex;
+    @extend .button;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    min-width: initial;
+    background-color: $color-2;
+    color: $color-6 !important;
+
+    &:hover {
+      color: $color-2 !important;
+
+      & svg {
+        fill: $color-2;
+      }
+    }
+
+    & svg {
+      transition: all 0.3s;
+      width: 3rem;
+      margin-right: 1rem;
       fill: $color-6;
     }
   }

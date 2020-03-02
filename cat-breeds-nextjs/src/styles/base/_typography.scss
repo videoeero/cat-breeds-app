@@ -24,8 +24,6 @@ a:visited {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s;
-  font-size: $default-font-size;
-  font-weight: 500;
 }
 
 .heading {
@@ -37,12 +35,38 @@ a:visited {
     font-size: 5rem;
     font-weight: 400;
     letter-spacing: 4px;
+    @include respond(tab-port) {
+      font-size: 4.5rem;
+    }
+
+    @include respond(phone) {
+      font-size: 4rem;
+      text-align: center;
+    }
   }
-}
-.paragraph {
-  margin: 2rem 3rem;
-  font-size: $default-font-size;
-  text-align: justify;
-  width: 80rem;
-  max-width: 90%;
+
+  &__h2 {
+    @extend .heading;
+    font-size: 6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-4;
+    text-align: center;
+    margin-bottom: 1rem;
+    @include respond(tab-port) {
+      font-size: 5rem;
+    }
+
+    @include respond(phone) {
+      font-size: 4rem;
+    }
+  }
+
+  &__h3 {
+    @extend .heading;
+    font-weight: 400;
+    text-align: center;
+    font-size: 3rem;
+    color: $color-6;
+  }
 }

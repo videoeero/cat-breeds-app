@@ -9,18 +9,27 @@
 
   &__search,
   &__earth,
-  &__remove {
+  &__remove,
+  &__paw {
     @extend .icon;
-    fill: $color-5;
+    fill: $color-4;
   }
 
   &__search {
-    fill: $color-5;
+    fill: $color-4;
     margin: 0.5rem 1.3rem 0 0;
   }
 
   &__earth {
     margin-right: 1rem;
+  }
+
+  &__paw {
+    height: 2.5rem;
+    width: 2.5rem;
+    &:not(:last-of-type) {
+      margin-right: 0.7rem;
+    }
   }
 
   &__remove {

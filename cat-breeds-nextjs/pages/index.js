@@ -73,10 +73,13 @@ class Home extends Component {
 
         return (
           <li key={id} className='breedlist__item'>
-            <div className='breedlist__item__heading'>
-              <CatIcon />
-              <h3 className='breedlist__item__heading__h3'>{name}</h3>
-            </div>
+            <Link href={`/breed/[breedpage]`} as={`/breed/${slug}`}>
+              <a className='breedlist__item__heading'>
+                <CatIcon />
+                <h3 className='breedlist__item__heading__h3'>{name}</h3>
+              </a>
+            </Link>
+
             <div className='breedlist__item__info'>
               <p className='breedlist__item__origin'>
                 <strong>Origin:</strong>&nbsp;{origin}

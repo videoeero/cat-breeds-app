@@ -1,5 +1,6 @@
 const withSass = require('@zeit/next-sass');
-module.exports = withSass({
+const withOffline = require('next-offline');
+const config = {
   env: {
     DB_URL: 'http://localhost:3000/api/v1/catBreeds'
   },
@@ -16,4 +17,6 @@ module.exports = withSass({
 
     return config;
   }
-});
+};
+
+module.exports = withOffline(withSass(config));
