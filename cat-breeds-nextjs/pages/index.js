@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
+import getOriginsArray from '../src/utils/getOriginsArray';
+import getBreedData from '../src/utils/getBreedData';
 import CatIcon from '../src/img/CatIcon';
 import SearchIcon from '../src/img/SearchIcon';
 import EarthIcon from '../src/img/EarthIcon';
 import RemoveIcon from '../src/img/RemoveIcon';
 
 class Home extends Component {
+  static async getInitialProps(context) {
+    const res = await fetch(process.env.DB_URL);
+    const json = await res.json();
+    const origins = await getOriginsArray(json.data.catBreeds);
+
+    return { cats: json, origins: origins };
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -89,7 +100,7 @@ class Home extends Component {
                 &nbsp;{temperament}
               </p>
 
-              <Link href={`/breed/[breedpage]`} as={`/breed/${slug}`}>
+              <Link href={`/breed/[id]`} as={`/breed/${slug}`}>
                 <a className='breedlist__item__link'>More info &rarr;</a>
               </Link>
             </div>

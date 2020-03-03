@@ -1,19 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
+import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
 import PawIcon from '../../src/img/PawIcon';
 import CatFighting from '../../src/img/CatFighting';
 import CatLitter from '../../src/img/CatLitter';
 import BackIcon from '../../src/img/BackIcon';
 
-export default function BreedPage({ breedpageData }) {
-  // const router = useRouter();
-  // const catBreeds = cats.data.catBreeds;
+BreedPage.getInitialProps = async context => {
+  const res = await fetch(
+    `${process.env.DB_URL}/breed/${context.query.breedpage}`
+  );
 
-  // const breed = catBreeds.find(breed => {
-  //   return breed.slug === router.query.breedpage;
-  // });
+  const json = await res.json();
+  console.log(json);
 
+  return { breed: json };
+};
+
+export default function BreedPage({ breed }) {
   function showStatPaws(name, paws) {
     let pawSvgs = [];
 
@@ -36,7 +41,7 @@ export default function BreedPage({ breedpageData }) {
     social_needs,
     stranger_friendly,
     more_info_url
-  } = breedpageData;
+  } = breed.data.catBreed;
 
   return (
     <section className='section__breedlist'>

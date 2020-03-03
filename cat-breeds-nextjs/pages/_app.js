@@ -7,17 +7,17 @@ import getBreedData from '../src/utils/getBreedData';
 import '../src/styles/main.scss';
 
 class CatBreeds extends App {
-  static async getInitialProps(context) {
-    const res = await fetch(process.env.DB_URL);
-    const json = await res.json();
-    const origins = await getOriginsArray(json.data.catBreeds);
+  // static async getInitialProps(context) {
+  //   const res = await fetch(process.env.DB_URL);
+  //   const json = await res.json();
+  //   const origins = await getOriginsArray(json.data.catBreeds);
 
-    const breedpageData = await json.data.catBreeds.find(breed => {
-      return breed.slug == context.ctx.query.breedpage;
-    });
+  //   const breedpageData = await json.data.catBreeds.find(breed => {
+  //     return breed.slug == context.ctx.query.breedpage;
+  //   });
 
-    return { cats: json, origins: origins, breedpageData: breedpageData };
-  }
+  //   return { cats: json, origins: origins, breedpageData: breedpageData };
+  // }
 
   render() {
     const { Component, pageProps, cats, origins, breedpageData } = this.props;
@@ -26,9 +26,9 @@ class CatBreeds extends App {
       <MainLayout>
         <Component
           {...pageProps}
-          cats={cats}
-          origins={origins}
-          breedpageData={breedpageData}
+          // cats={cats}
+          // origins={origins}
+          // breedpageData={breedpageData}
         />
       </MainLayout>
     );
