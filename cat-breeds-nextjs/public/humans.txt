@@ -1,0 +1,8 @@
+﻿# humanstxt.org/
+
+# MADE BY
+	Eero Suvanto -- eero.suvanto [at] gmail.com
+
+# API DATA BORROWED FORM
+	https://api.thecatapi.com/v1/breeds
+    
