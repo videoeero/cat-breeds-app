@@ -58,6 +58,7 @@
     min-width: initial;
     background-color: $color-2;
     color: $color-6 !important;
+    z-index: 20;
 
     &:hover {
       color: $color-2 !important;
