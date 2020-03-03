@@ -2,11 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 import CatIcon from '../img/CatIcon';
 
-export default function CatBreedListItem({ breed }) {
+export default function CatBreedListItem({ breed, index }) {
   const { slug, name, origin, temperament } = breed;
 
   return (
-    <li className='breedlist__item'>
+    <li
+      className='breedlist__item fadeIn'
+      style={{
+        animationDelay: `${(0.3 * (1 - Math.pow(0.85, index))) / (1 - 0.85)}s`
+      }}
+    >
       <Link href={`/breed/[breedpage]`} as={`/breed/${slug}`}>
         <a className='breedlist__item__heading'>
           <CatIcon />

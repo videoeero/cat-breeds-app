@@ -1,18 +1,48 @@
-.page-transition-enter {
+.fadeIn {
   opacity: 0;
-  transform: translateX(-100vw);
+  animation: fadeIn 1s ease-in-out 0s 1 normal forwards;
 }
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 300ms;
-}
-.page-transition-exit {
-  opacity: 1;
-  transform: translateX(0);
-}
-.page-transition-exit-active {
+
+.fadeInPaw {
   opacity: 0;
-  transform: translateX(100vw);
-  transition: all 300ms;
+  animation: fadeInPaw 0.5s ease-out 0s 1 normal forwards;
+}
+
+.fadeInNormal {
+  opacity: 0;
+  animation: fadeInNormal 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInNormal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInPaw {
+  0% {
+    opacity: 0;
+    transform: translateX(-4rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

@@ -69,6 +69,7 @@ class Home extends Component {
   }
 
   render() {
+    console.clear();
     const { origins, filterDefault, isOriginFilterOpen } = this.state;
     const catBreeds = this.props.cats.data.catBreeds;
     const allOrigins = this.props.origins;
@@ -78,11 +79,6 @@ class Home extends Component {
         breed.name.toLowerCase().includes(this.state.search.toLowerCase()) &&
         this.state.origins.includes(breed.origin)
     );
-
-    const createCatBreedList = array =>
-      array.map(breed => {
-        return <CatBreedListItem key={breed.id} breed={breed} />;
-      });
 
     const createOriginFilterList = array =>
       array.map((item, index) => {
@@ -95,6 +91,11 @@ class Home extends Component {
             origins={origins}
           />
         );
+      });
+
+    const createCatBreedList = array =>
+      array.map((breed, index) => {
+        return <CatBreedListItem index={index} key={breed.id} breed={breed} />;
       });
 
     return (

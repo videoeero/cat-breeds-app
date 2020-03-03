@@ -18,7 +18,7 @@ const Paws = ({ name, numOfPaws }) => {
   let pawSvgs = [];
 
   for (let i = 0; i < numOfPaws; i++) {
-    pawSvgs.push(<PawIcon key={`${name.slice(0, 5)}_paw_${i}`} />);
+    pawSvgs.push(<PawIcon key={`${name.slice(0, 5)}_paw_${i}`} index={i} />);
   }
   return pawSvgs;
 };

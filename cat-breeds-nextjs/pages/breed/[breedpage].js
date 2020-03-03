@@ -43,34 +43,43 @@ export default function BreedPage({ breed }) {
       </Link>
       <div className='breed'>
         <h2 className='heading__h2'>{name}</h2>
-        <div className='breed__subheading'>
-          <h3 className='heading__h3'>Basic info</h3>
-          <CatLitter />
-        </div>
-        <BreedTextItem title={'Origin'} content={origin} />
-        <BreedTextItem title={'Temperament'} content={temperament} />
-        <BreedTextItem title={'Description'} content={description} />
-        <BreedTextItem
-          title={'Additional info'}
-          isLink={true}
-          content={more_info_url}
-        />
+        <div className='fadeIn'>
+          <div className='breed__subheading'>
+            <h3 className='heading__h3'>Basic info</h3>
+            <CatLitter />
+          </div>
 
-        <div className='breed__subheading'>
-          <h3 className='heading__h3'>Ability levels</h3>
-          <CatFighting />
-        </div>
-        <div className='breed__stats__wrapper'>
-          <BreedStatsItem name={'Adaptability'} numOfPaws={adaptability} />
-          <BreedStatsItem name={'Affection'} numOfPaws={affection_level} />
-          <BreedStatsItem name={'Energy'} numOfPaws={energy_level} />
-          <BreedStatsItem name={'Grooming'} numOfPaws={grooming} />
-          <BreedStatsItem name={'Intelligence'} numOfPaws={intelligence} />
-          <BreedStatsItem name={'Social Needs'} numOfPaws={social_needs} />
-          <BreedStatsItem
-            name={'Stranger Friendliness'}
-            numOfPaws={stranger_friendly}
+          <BreedTextItem title={'Origin'} content={origin} />
+          <BreedTextItem title={'Temperament'} content={temperament} />
+          <BreedTextItem title={'Description'} content={description} />
+          <BreedTextItem
+            title={'Additional info'}
+            isLink={true}
+            content={more_info_url}
           />
+        </div>
+        <div
+          className='fadeIn'
+          style={{
+            animationDelay: '0.5s'
+          }}
+        >
+          <div className='breed__subheading'>
+            <h3 className='heading__h3'>Ability levels</h3>
+            <CatFighting />
+          </div>
+          <div className='breed__stats__wrapper'>
+            <BreedStatsItem name={'Adaptability'} numOfPaws={adaptability} />
+            <BreedStatsItem name={'Affection'} numOfPaws={affection_level} />
+            <BreedStatsItem name={'Energy'} numOfPaws={energy_level} />
+            <BreedStatsItem name={'Grooming'} numOfPaws={grooming} />
+            <BreedStatsItem name={'Intelligence'} numOfPaws={intelligence} />
+            <BreedStatsItem name={'Social Needs'} numOfPaws={social_needs} />
+            <BreedStatsItem
+              name={'Stranger Friendliness'}
+              numOfPaws={stranger_friendly}
+            />
+          </div>
         </div>
       </div>
     </section>
