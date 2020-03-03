@@ -5,7 +5,8 @@ const withPWA = require('next-pwa');
 
 module.exports = withSass({
   env: {
-    DB_URL: 'http://localhost:3000/api/v1/catBreeds'
+    DB_URL: 'https://cat-breed-backend.herokuapp.com/api/v1/catbreeds',
+    DB_LOCAL: 'http://localhost:3000/api/v1/catBreeds'
   },
   pwa: {
     dest: 'public'
