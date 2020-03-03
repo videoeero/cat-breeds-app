@@ -3,7 +3,6 @@ import React from 'react';
 export default function PawIcon({ index }) {
   return (
     <svg
-      // className='icon__paw fadeInPaw'
       className={index == 0 ? 'icon__paw fadeInNormal' : 'icon__paw fadeInPaw'}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 61.4 57.6'
