@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import { useRouter } from 'next/router';
-import PawIcon from '../../src/img/PawIcon';
+
+import BreedTextItem from '../../src/components/BreedTextItem';
+import BreedStatsItem from '../../src/components/BreedStatsItem';
 import CatFighting from '../../src/img/CatFighting';
 import CatLitter from '../../src/img/CatLitter';
 import BackIcon from '../../src/img/BackIcon';
@@ -13,21 +14,11 @@ BreedPage.getInitialProps = async context => {
   );
 
   const json = await res.json();
-  console.log(json);
 
   return { breed: json };
 };
 
 export default function BreedPage({ breed }) {
-  function showStatPaws(name, paws) {
-    let pawSvgs = [];
-
-    for (let i = 0; i < paws; i++) {
-      pawSvgs.push(<PawIcon key={`${name}Paw_${i}`} />);
-    }
-    return pawSvgs;
-  }
-
   const {
     name,
     temperament,
@@ -56,92 +47,30 @@ export default function BreedPage({ breed }) {
           <h3 className='heading__h3'>Basic info</h3>
           <CatLitter />
         </div>
-        <p className='breed__text'>
-          <strong>Origin:&nbsp;</strong>
-          {origin}
-        </p>
-        <p className='breed__text'>
-          <strong>Temperament:&nbsp;</strong>
-          {temperament}
-        </p>
-        <p className='breed__text'>
-          <strong>Description:&nbsp;</strong>
-          {description}
-        </p>
-        <p className='breed__text'>
-          <strong>Additional info:&nbsp;</strong>
+        <BreedTextItem title={'Origin'} content={origin} />
+        <BreedTextItem title={'Temperament'} content={temperament} />
+        <BreedTextItem title={'Description'} content={description} />
+        <BreedTextItem
+          title={'Additional info'}
+          isLink={true}
+          content={more_info_url}
+        />
 
-          <a
-            className='breed__text__link'
-            href={more_info_url}
-            target='__black'
-            rel='noopener'
-          >
-            Wikipedia &rarr;
-          </a>
-        </p>
         <div className='breed__subheading'>
           <h3 className='heading__h3'>Ability levels</h3>
           <CatFighting />
         </div>
         <div className='breed__stats__wrapper'>
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Adaptability:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('adaptability', adaptability)}
-            </div>
-          </div>
-
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Affection:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('affectionLevel', affection_level)}
-            </div>
-          </div>
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Energy:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('energyLevel', energy_level)}
-            </div>
-          </div>
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Grooming:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('grooming', grooming)}
-            </div>
-          </div>
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Intelligence:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('intelligence', intelligence)}
-            </div>
-          </div>
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Social Needs:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('socialNeeds', social_needs)}
-            </div>
-          </div>
-          <div className='breed__stats'>
-            <p className='breed__stats__text'>
-              <strong>Stranger Friendliness:</strong>
-            </p>
-            <div className='breed__stats__paws'>
-              {showStatPaws('strangerFriendly', stranger_friendly)}
-            </div>
-          </div>
+          <BreedStatsItem name={'Adaptability'} numOfPaws={adaptability} />
+          <BreedStatsItem name={'Affection'} numOfPaws={affection_level} />
+          <BreedStatsItem name={'Energy'} numOfPaws={energy_level} />
+          <BreedStatsItem name={'Grooming'} numOfPaws={grooming} />
+          <BreedStatsItem name={'Intelligence'} numOfPaws={intelligence} />
+          <BreedStatsItem name={'Social Needs'} numOfPaws={social_needs} />
+          <BreedStatsItem
+            name={'Stranger Friendliness'}
+            numOfPaws={stranger_friendly}
+          />
         </div>
       </div>
     </section>

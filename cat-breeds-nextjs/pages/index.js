@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
-import Link from 'next/link';
 import getOriginsArray from '../src/utils/getOriginsArray';
-import getBreedData from '../src/utils/getBreedData';
-import CatIcon from '../src/img/CatIcon';
+
+import CatBreedListItem from '../src/components/CatBreedListItem';
+import OriginFilterButton from '../src/components/OriginFilterButton';
+
 import SearchIcon from '../src/img/SearchIcon';
 import EarthIcon from '../src/img/EarthIcon';
 import RemoveIcon from '../src/img/RemoveIcon';
@@ -80,48 +81,19 @@ class Home extends Component {
 
     const createCatBreedList = array =>
       array.map(breed => {
-        const { name, origin, temperament, slug, id } = breed;
-
-        return (
-          <li key={id} className='breedlist__item'>
-            <Link href={`/breed/[breedpage]`} as={`/breed/${slug}`}>
-              <a className='breedlist__item__heading'>
-                <CatIcon />
-                <h3 className='breedlist__item__heading__h3'>{name}</h3>
-              </a>
-            </Link>
-
-            <div className='breedlist__item__info'>
-              <p className='breedlist__item__origin'>
-                <strong>Origin:</strong>&nbsp;{origin}
-              </p>
-              <p className='breedlist__item__temperament'>
-                <strong>Temperament:</strong>
-                &nbsp;{temperament}
-              </p>
-
-              <Link href={`/breed/[id]`} as={`/breed/${slug}`}>
-                <a className='breedlist__item__link'>More info &rarr;</a>
-              </Link>
-            </div>
-          </li>
-        );
+        return <CatBreedListItem key={breed.id} breed={breed} />;
       });
 
     const createOriginFilterList = array =>
       array.map((item, index) => {
         return (
-          <button
-            onClick={() => this.handleOriginFilterClick(item)}
-            className={
-              origins.includes(item) && filterDefault == false
-                ? 'button__filter active'
-                : 'button__filter'
-            }
-            key={index}
-          >
-            {item}
-          </button>
+          <OriginFilterButton
+            key={`originButton_${index}`}
+            handleOriginFilterClick={this.handleOriginFilterClick}
+            item={item}
+            filterDefault={filterDefault}
+            origins={origins}
+          />
         );
       });
 
@@ -136,12 +108,15 @@ class Home extends Component {
           <div className='breedlist__filter'>
             <div className='breedlist__filter__search'>
               <input
+                aria-labelledby='search-label'
                 autoComplete='off'
                 placeholder='Search for cat breeds'
                 id='search'
                 onChange={this.handleChange}
               ></input>
-              <label htmlFor='search'>Search for cat breeds</label>
+              <label id='search-label' htmlFor='search'>
+                Search for cat breeds
+              </label>
               <SearchIcon />
             </div>
             <div className='breedlist__filter__origin'>
