@@ -47,10 +47,10 @@
       width: 100%;
 
       & label {
-        font-size: $default-font-size;
+        font-size: 2rem;
         cursor: text;
         transition: all 0.3s ease-in-out;
-        transform: translateY(4rem);
+        transform: translateY(-4rem);
         display: block;
         position: absolute;
         top: 0;
