@@ -1,8 +1,13 @@
 const withSass = require('@zeit/next-sass');
-const withOffline = require('next-offline');
+
+const withPWA = require('next-pwa');
+
 const config = {
   env: {
     DB_URL: 'http://localhost:3000/api/v1/catBreeds'
+  },
+  pwa: {
+    dest: 'public'
   },
   webpack(config, options) {
     config.module.rules.push({
@@ -19,4 +24,4 @@ const config = {
   }
 };
 
-module.exports = withOffline(withSass(config));
+module.exports = withPWA(withSass(config));
