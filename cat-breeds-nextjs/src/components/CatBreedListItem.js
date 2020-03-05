@@ -2,6 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import { CatIcon } from '../components/SvgIcons';
 
+/**
+ * Renders a component of a single breed list item on the front page
+ * @param {Object} breed the breed object where all the info is parsed
+ * @param {Integer} index to calculate smoothly some fancy fade in effect.
+ */
+
 export default function CatBreedListItem({ breed, index }) {
   const { slug, name, origin, temperament } = breed;
 

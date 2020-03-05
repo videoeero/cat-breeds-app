@@ -1,5 +1,14 @@
 import React from 'react';
 
+/**
+ * Bunch of SVG icons
+ * @param {String} title the title tag for accessibility
+ * @param {String} desc the desc tag for accessibility
+ *
+ * For some these also
+ * @param {String} color if we want give the SVG a gradient fill color
+ */
+
 export function BackIcon({ title, desc }) {
   return (
     <svg

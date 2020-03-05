@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Renders a component of a single origin filter button for the front page
+ */
+
 export default function OriginFilterButton({
   handleOriginFilterClick,
   origins,

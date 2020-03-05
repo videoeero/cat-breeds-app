@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import Navigation from '../includes/Navigation';
 import Header from '../includes/Header';
 import Footer from '../includes/Footer';
 import Head from 'next/head';
-import { withRouter } from 'next/router';
+
+// The basic setup for each page rendered
 
 class MainLayout extends Component {
   render() {
-    const { children, router } = this.props;
-
     return (
       <>
         <Head>
-          <title>Cat Breeds App</title>
           <meta charSet='utf-8' />
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
           <meta
@@ -23,10 +20,10 @@ class MainLayout extends Component {
           <meta property='og:title' content='Cat Breeds App' />
           <meta property='og:locale' content='en_EN' />
           <meta property='og:type' content='website' />
-          {/* <meta
+          <meta
             property='og:image'
-            content=''
-          /> */}
+            content={`https://catknowledge.now.sh/img/catknowledge.jpg`}
+          />
           <meta property='og:description' content='Cat Breeds App' />
           <meta name='description' content='Cat Breeds App' />
           <link
@@ -61,7 +58,6 @@ class MainLayout extends Component {
           <meta name='theme-color' content='#ffffff'></meta>
         </Head>
         <div className='mainLayout_container'>
-          <Navigation />
           <Header />
           {this.props.children}
           <Footer />
@@ -71,4 +67,4 @@ class MainLayout extends Component {
   }
 }
 
-export default withRouter(MainLayout);
+export default MainLayout;

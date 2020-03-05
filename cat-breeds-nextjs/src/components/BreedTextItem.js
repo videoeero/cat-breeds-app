@@ -1,3 +1,10 @@
+/**
+ * Componenent to render a given info about the breed.
+ * @param {String} title title of the info
+ * @param {inLink} boolean if true, then content will handled as a hyperlink
+ * @param {content} string the info content about given info
+ */
+
 const BreedTextItem = ({ title, isLink, content }) => {
   return (
     <p className='breed__text'>

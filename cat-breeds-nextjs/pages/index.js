@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import getOriginsArray from '../src/utils/getOriginsArray';
-
 import CatBreedListItem from '../src/components/CatBreedListItem';
 import OriginFilterButton from '../src/components/OriginFilterButton';
-
 import { SearchIcon, EarthIcon, RemoveIcon } from '../src/components/SvgIcons';
+
+/**
+ * Renders the index page.
+ */
 
 class Home extends Component {
   // Get initial props from the API
@@ -138,9 +140,16 @@ class Home extends Component {
     return (
       <>
         <Head>
-          <meta property='og:url' content='https://catbreeds.now.sh' />
-          <meta property='og:description' content='Cats cats more cats!' />
-          <meta name='description' content='Cats cats more cats!' />
+          <title>Cat Knowledge</title>
+          <meta property='og:url' content='https://knowledge.now.sh' />
+          <meta
+            property='og:description'
+            content='Your definite database for different cat breeds.'
+          />
+          <meta
+            name='description'
+            content='Your definite database for different cat breeds.'
+          />
         </Head>
         <section className='section__breedlist'>
           <div className='breedlist__filter'>
