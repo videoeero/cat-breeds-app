@@ -50,7 +50,9 @@ a:visited {
     font-size: 6rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: $color-orange;
+    color: transparent;
+    background-image: $gradient-2;
+    background-clip: text;
     text-align: center;
     margin-bottom: 1rem;
     @include respond(tab-port) {
