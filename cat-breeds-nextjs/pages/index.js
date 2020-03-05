@@ -11,6 +11,8 @@ import EarthIcon from '../src/img/EarthIcon';
 import RemoveIcon from '../src/img/RemoveIcon';
 
 class Home extends Component {
+  // Get initial props from the API
+
   static async getInitialProps(context) {
     const res = await fetch(process.env.DB_URL);
     const json = await res.json();
@@ -22,9 +24,13 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Array of breed origins
       origins: this.props.origins,
+      // User input for name search
       search: '',
+      // By default user has not clicked any specific origin filter on, so all breeds are shown
       filterDefault: true,
+      // By default user has not clicked the filter by origin list on
       isOriginFilterOpen: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,13 +39,24 @@ class Home extends Component {
     this.handleOriginFilterClick = this.handleOriginFilterClick.bind(this);
   }
 
+  /**
+   * State handler for seach by name form input
+   * @param {String} event input what user types to form
+   */
   handleChange(event) {
     this.setState({ search: event.target.value });
   }
+
+  /**
+   * State handler for toggling "Filter by Origin" list
+   */
   toggleOriginFilterOpen() {
     this.setState({ isOriginFilterOpen: !this.state.isOriginFilterOpen });
   }
 
+  /**
+   * Reset all states to initial state, fired at Reset button
+   */
   resetStates() {
     this.setState({
       origins: this.props.origins,
@@ -49,36 +66,53 @@ class Home extends Component {
     });
   }
 
+  /**
+   * State handler for filter by origin buttons
+   * @param {String} origin the clicked origin
+   */
+
   handleOriginFilterClick(origin) {
     const currentState = this.state.origins;
     const filterDefault = this.state.filterDefault;
     const allOrigins = this.props.origins;
+
+    // Check if this is the first time user clicks a filter on
     if (currentState.length == allOrigins.length && filterDefault) {
       this.setState({ origins: [origin], filterDefault: false });
+
+      // Check if user has clicked only one origin on and wants to set it also off
     } else if (currentState.includes(origin) && currentState.length == 1) {
       this.setState({ origins: this.props.origins, filterDefault: true });
+
+      // Check if the origin user clicks is already on and removes it from filters
     } else if (currentState.includes(origin)) {
       const removeThis = currentState.indexOf(origin);
       if (removeThis > -1) {
         currentState.splice(removeThis, 1);
         this.setState({ origins: currentState });
       }
+      // Else toggles on the origin filter user wants to see
     } else {
       this.setState({ origins: [...currentState, origin] });
     }
   }
 
   render() {
-    console.clear();
     const { origins, filterDefault, isOriginFilterOpen } = this.state;
     const catBreeds = this.props.cats.data.catBreeds;
     const allOrigins = this.props.origins;
 
+    // Filters cat breeds which name's include user's search input
     let filterBreedsByName = catBreeds.filter(
       breed =>
         breed.name.toLowerCase().includes(this.state.search.toLowerCase()) &&
         this.state.origins.includes(breed.origin)
     );
+
+    /**
+     * Creates buttons for Filter by origin feature
+     * @param {String[]} array of breed origins
+     */
 
     const createOriginFilterList = array =>
       array.map((item, index) => {
@@ -92,6 +126,11 @@ class Home extends Component {
           />
         );
       });
+
+    /**
+     * Creates the list of catbreeds on index page
+     * @param {Object[]} array of cat breed objects
+     */
 
     const createCatBreedList = array =>
       array.map((breed, index) => {
