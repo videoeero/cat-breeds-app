@@ -1,12 +1,24 @@
 .breedlist {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
+  // display: flex;
+  // align-items: flex-start;
+  // justify-content: center;
+  // flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 4rem;
+  grid-column-gap: 2rem;
   list-style: none;
   margin: 2rem 4rem;
   width: 130rem;
   max-width: 90vw;
+
+  @include respond(tab-port) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond(small-phone) {
+    justify-items: center;
+    grid-template-columns: 1fr;
+  }
 
   &__origins {
     @include flex__column;
@@ -108,11 +120,9 @@
   }
 
   &__item {
-    width: 35rem;
-    margin: 2rem;
     max-width: 80vw;
 
-    @include respond(phone) {
+    @include respond(small-phone) {
       width: 45rem;
     }
 
