@@ -17,15 +17,13 @@ class MainLayout extends Component {
             content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=yes'
           />
           <meta name='keywords' content='cats,breeds,knowledge,science' />
-          <meta property='og:title' content='Cat Breeds App' />
+          <meta property='og:title' content='Cat Knowledge' />
           <meta property='og:locale' content='en_EN' />
           <meta property='og:type' content='website' />
           <meta
             property='og:image'
-            content={`https://catknowledge.now.sh/img/catknowledge.jpg`}
+            content={`https://catknowledge.now.sh/images/catknowledge.jpg`}
           />
-          <meta property='og:description' content='Cat Breeds App' />
-          <meta name='description' content='Cat Breeds App' />
           <link
             rel='apple-touch-icon'
             sizes='180x180'

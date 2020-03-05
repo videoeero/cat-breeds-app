@@ -141,7 +141,7 @@ class Home extends Component {
       <>
         <Head>
           <title>Cat Knowledge</title>
-          <meta property='og:url' content='https://knowledge.now.sh' />
+          <meta property='og:url' content='https://catknowledge.now.sh' />
           <meta
             property='og:description'
             content='Your definite database for different cat breeds.'
