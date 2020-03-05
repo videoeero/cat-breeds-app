@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import NerdCat from '../../img/NerdCat';
 import NerdCatAlt from '../../img/NerdCatAlt';
 
+// Render a Header component
+
 class Header extends Component {
   render() {
     return (
