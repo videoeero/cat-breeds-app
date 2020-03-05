@@ -1,20 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-
 import BreedTextItem from '../../src/components/BreedTextItem';
 import BreedStatsItem from '../../src/components/BreedStatsItem';
-import CatFighting from '../../src/img/CatFighting';
-import CatLitter from '../../src/img/CatLitter';
-import BackIcon from '../../src/img/BackIcon';
+import SvgGradient from '../../src/components/SvgGradient';
+import {
+  CatFighting,
+  CatLitter,
+  BackIcon
+} from '../../src/components/SvgIcons';
 
 BreedPage.getInitialProps = async context => {
   const res = await fetch(
     `${process.env.DB_URL}/breed/${context.query.breedpage}`
   );
-
   const json = await res.json();
-
   return { breed: json };
 };
 
@@ -38,7 +38,8 @@ export default function BreedPage({ breed }) {
     <section className='section__breedlist'>
       <Link href='/'>
         <a className='button__back'>
-          <BackIcon /> Back
+          <BackIcon title={'Go back'} desc={'Click to go back to home page'} />
+          Back
         </a>
       </Link>
       <div className='breed'>
@@ -46,7 +47,13 @@ export default function BreedPage({ breed }) {
         <div className='fadeIn'>
           <div className='breed__subheading'>
             <h3 className='heading__h3'>Basic info</h3>
-            <CatLitter />
+            <CatLitter
+              color={'red'}
+              title={'Cat in a litter box'}
+              desc={
+                'A cat sitting in a litter box, looking furious as hell. Still quite adorable.'
+              }
+            />
           </div>
 
           <BreedTextItem title={'Origin'} content={origin} />
@@ -66,7 +73,11 @@ export default function BreedPage({ breed }) {
         >
           <div className='breed__subheading'>
             <h3 className='heading__h3'>Ability levels</h3>
-            <CatFighting />
+            <CatFighting
+              color={'red'}
+              title={'Cat fighting'}
+              desc={"A cat swiping with it's claws fiercely."}
+            />
           </div>
           <div className='breed__stats__wrapper'>
             <BreedStatsItem name={'Adaptability'} numOfPaws={adaptability} />
@@ -82,6 +93,9 @@ export default function BreedPage({ breed }) {
           </div>
         </div>
       </div>
+      <svg className='svgGradient' aria-hidden='true' focusable='false'>
+        <SvgGradient color={'red'} />
+      </svg>
     </section>
   );
 }

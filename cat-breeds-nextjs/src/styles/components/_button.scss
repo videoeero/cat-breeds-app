@@ -12,7 +12,7 @@
 
   &:hover {
     color: $color-white;
-    background-color: $color-7;
+    background-color: $color-red;
     transform: scale(1.05);
     box-shadow: 0 3px 8px 0px rgba($color-black, 0.5);
   }
@@ -24,7 +24,7 @@
 
   &__filter__main {
     @extend .button;
-    background-color: $color-4;
+    background-color: $color-orange;
     border-radius: 3px;
     font-size: 1.8rem;
     color: $color-white !important;
@@ -34,17 +34,17 @@
     @extend .button;
     margin: 0.5rem;
     background: none;
-    border: 1px solid $color-6;
-    color: $color-6;
+    border: 1px solid $color-purple;
+    color: $color-purple;
   }
 
   &__filter.active,
   &__filter__main.active {
     color: $color-white;
-    background-color: $color-6;
+    background-color: $color-purple;
 
     & + .icon {
-      fill: $color-6;
+      fill: $color-purple;
     }
   }
 
@@ -56,15 +56,15 @@
     bottom: 2rem;
     left: 2rem;
     min-width: initial;
-    background-color: $color-2;
-    color: $color-6 !important;
+    background-color: $color-yellow;
+    color: $color-purple !important;
     z-index: 20;
 
     &:hover {
-      color: $color-2 !important;
+      color: $color-yellow !important;
 
       & svg {
-        fill: $color-2;
+        fill: $color-yellow;
       }
     }
 
@@ -72,7 +72,7 @@
       transition: all 0.3s;
       width: 3rem;
       margin-right: 1rem;
-      fill: $color-6;
+      fill: $color-purple;
     }
   }
 }

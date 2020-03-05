@@ -12,11 +12,11 @@
   &__remove,
   &__paw {
     @extend .icon;
-    fill: $color-4;
+    fill: $color-orange;
   }
 
   &__search {
-    fill: $color-4;
+    fill: $color-orange;
     margin: 0.5rem 1.3rem 0 0;
   }
 
@@ -41,4 +41,19 @@
       height: 3rem;
     }
   }
+}
+
+.svgGradient {
+  visibility: hidden;
+}
+
+.icon-bg {
+  &__red {
+    fill: url(#icon-gradient-red) green;
+  }
+}
+
+#icon-gradient-red {
+  --color-1: #9a031e;
+  --color-2: #5f0f40;
 }

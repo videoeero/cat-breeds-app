@@ -74,12 +74,12 @@
         width: 100%;
         padding: 1rem;
         font-size: 2rem;
-        border: 2px solid $color-4;
+        border: 2px solid $color-orange;
         transition: all 0.3s;
         box-shadow: 0 3px 5px 0px rgba($color-black, 0.5);
 
         &:focus {
-          border: 2px solid $color-2;
+          border: 2px solid $color-yellow;
           box-shadow: 0 3px 2px 0px rgba($color-black, 0.5);
         }
 
@@ -108,11 +108,11 @@
         &:hover {
           & .button {
             color: $color-white;
-            background-color: $color-7;
+            background-color: $color-red;
           }
 
           & .icon {
-            fill: $color-7;
+            fill: $color-red;
           }
         }
       }
@@ -143,14 +143,14 @@
       margin-bottom: 0.5rem;
 
       & .icon__cat {
-        fill: $color-3;
+        fill: $color-blue;
         width: 4rem;
         height: 4rem;
         margin-right: 1rem;
       }
 
       &__h3 {
-        color: $color-4;
+        color: $color-orange;
         text-transform: uppercase;
         font-weight: 700;
       }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import CatIcon from '../img/CatIcon';
+import { CatIcon } from '../components/SvgIcons';
 
 export default function CatBreedListItem({ breed, index }) {
   const { slug, name, origin, temperament } = breed;
@@ -14,7 +14,10 @@ export default function CatBreedListItem({ breed, index }) {
     >
       <Link href={`/breed/[breedpage]`} as={`/breed/${slug}`}>
         <a className='breedlist__item__heading'>
-          <CatIcon />
+          <CatIcon
+            title={'Cat Icon'}
+            desc={`Click to see more info about ${name}`}
+          />
           <h3 className='breedlist__item__heading__h3'>{name}</h3>
         </a>
       </Link>

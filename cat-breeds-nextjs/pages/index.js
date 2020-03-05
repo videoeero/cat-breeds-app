@@ -6,9 +6,7 @@ import getOriginsArray from '../src/utils/getOriginsArray';
 import CatBreedListItem from '../src/components/CatBreedListItem';
 import OriginFilterButton from '../src/components/OriginFilterButton';
 
-import SearchIcon from '../src/img/SearchIcon';
-import EarthIcon from '../src/img/EarthIcon';
-import RemoveIcon from '../src/img/RemoveIcon';
+import { SearchIcon, EarthIcon, RemoveIcon } from '../src/components/SvgIcons';
 
 class Home extends Component {
   // Get initial props from the API
@@ -157,7 +155,7 @@ class Home extends Component {
               <label id='search-label' htmlFor='search'>
                 Search for cat breeds
               </label>
-              <SearchIcon />
+              <SearchIcon title={'Search'} desc={'Search cat breed by name'} />
             </div>
             <div className='breedlist__filter__origin'>
               <div
@@ -173,14 +171,20 @@ class Home extends Component {
                 >
                   Filter by origin
                 </button>
-                <EarthIcon />
+                <EarthIcon
+                  title={'Filter breeds by origin'}
+                  desc={'Filter breeds by origin'}
+                />
               </div>
               <div
                 onClick={() => this.resetStates()}
                 className='breedlist__filter__origin__item'
               >
                 <button className='button__filter__main'>Reset</button>
-                <RemoveIcon />
+                <RemoveIcon
+                  title={'Reset filters'}
+                  desc={'Reset search criteria filters'}
+                />
               </div>
             </div>
           </div>
